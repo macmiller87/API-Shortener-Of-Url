@@ -1,0 +1,10 @@
+services:       
+  app:                              
+    build: .
+    container_name: Shortener-Of-Url      
+    restart: always
+    ports:
+      - "8080:8080"                                  
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules               
