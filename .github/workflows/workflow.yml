@@ -19,11 +19,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: "Set up Docker"
-        run: docker compose up -d
-        
       - name: Install Dependencies
         run: yarn install
+
+      - name: "Set up Docker"
+        run: docker compose up -d
 
       - name: Run ESLint
         run: yarn lint
