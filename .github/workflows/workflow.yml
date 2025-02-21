@@ -15,15 +15,12 @@ on:
 jobs:
   app:
     runs-on: ubuntu-latest
-    services:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.14.0
+      - name: "Set up Docker"
+        run: yarn dc:up --wait
         
       - name: Install Dependencies
         run: yarn install
