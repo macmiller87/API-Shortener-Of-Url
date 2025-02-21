@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: "Set up Docker"
-        run: yarn dc:up --wait
+        run: yarn dc:up
         
       - name: Install Dependencies
         run: yarn install
