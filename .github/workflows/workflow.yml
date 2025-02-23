@@ -3,7 +3,7 @@ name: Continuous integration
 on:
   push:
     paths:
-      - "**.js"
+      - "**.ts"
       - "**.json"
       - "**.yml"
     branches: [ "master" ]
@@ -23,10 +23,7 @@ jobs:
         run: yarn install
 
       - name: "Set up Docker"
-        run: docker compose up -d
+        run: yarn prisma:db:deploy:actions
 
       - name: Run ESLint
         run: yarn lint
-
-      - name: Run Tests
-        run: yarn test

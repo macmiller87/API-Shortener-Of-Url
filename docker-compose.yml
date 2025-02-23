@@ -1,10 +1,38 @@
 services:       
-  app:                              
-    build: .
-    container_name: Shortener-Of-Url      
+  postgres_db:                         
+    image: postgres    
+    user: postgres        
+    container_name: postgres_db
+    restart: always                 
+    ports:
+      - "5432:5432"   
+    environment:                 
+      - POSTGRES_USER=${POSTGRES_USER_DOCKER}        
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_DOCKER}   
+      - POSTGRES_DB=${POSTGRES_DATABASE_DOCKER}       
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5  
+    networks:
+      - prisma-network
+
+  app:
+    build: .          
+    container_name: server      
     restart: always
     ports:
-      - "8080:8080"                                  
-    volumes:
-      - .:/usr/app
-      - /usr/app/node_modules               
+      - "8080:8080"   
+    tty: true  # Keeps the container running for debugging        
+    env_file:
+      - .env.prod                                        
+    depends_on:
+      postgres_db: 
+        condition: service_healthy
+    networks:
+      - prisma-network
+
+networks:
+  prisma-network:
+    name: prisma-network

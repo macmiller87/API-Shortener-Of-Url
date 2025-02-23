@@ -1,13 +1,13 @@
 FROM node:22.14.0
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
-COPY package*.json ./
-
-RUN npm install 
+COPY package*.json yarn.lock ./
 
 COPY . .
 
-EXPOSE 8080
+COPY prisma ./prisma/
 
-CMD ["npm","run","start"]
+RUN npm install  
+
+CMD ["npm","run","prisma:db:deploy"]
