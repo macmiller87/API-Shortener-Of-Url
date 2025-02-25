@@ -1,8 +1,8 @@
-### 💻 Projeto
-
 <p align="center">
     <img src="screens/logo.png" alt="demonstration"/>
 </p>
+
+### 💻 Projeto
 
  - Deafio Backend Tedd'y open finance, fazer um sistema `ENCURTADOR DE URL`.
 
@@ -44,10 +44,6 @@
 - A rota deve receber através do `query` o `user_id` do usuário a ser consultado , e o `Token` do mesmo pelo auth `Bearer`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados.
 
 ## Project setup
-
-```bash
-$ yarn install
-```
 
 ## Para rodar essa aplicação siga os seguintes passos:
 
