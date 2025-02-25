@@ -4,16 +4,22 @@ import { AppError } from "src/utils/errors/AppError";
 
 interface urlShortRequest {
     originalUrl: string;
+    user_id: string;
+}
+interface urlShortResponse {
+    originalUrl: string;
 }
 
 @Injectable()
 export class ShortUrlUseCase {
 
-    constructor(private urlRepository: IUrlRepository) {}
+    constructor(
+        private urlRepository: IUrlRepository,
+    ) {}
 
     async execute(request: urlShortRequest): Promise<object> {
 
-        const { originalUrl } = request;
+        const { originalUrl, user_id } = request;
 
         if(originalUrl === "") {
             throw new AppError("The Url field must to have a value !", 401);
@@ -23,18 +29,28 @@ export class ShortUrlUseCase {
 
         }else {
 
+            const regex = /[A-Za-z]+:/;
+
+            if(!regex.test(originalUrl)) {
+                throw new AppError("Please Put a Valid Url !", 401);
+            }
+
             const checkOriginalUrl = await this.urlRepository.findOriginaUrl(originalUrl);
 
             if(checkOriginalUrl) {
                 throw new AppError("Url already Exist !", 401);
             }
 
-            const create = await this.urlRepository.create(originalUrl);
+            const user = await this.urlRepository.findUserId(user_id);
 
-            const url = process.env.BASE_URL + create.shortCode;
+            if(!user) {
+                throw new AppError("User Not Found !");
+            }
+
+            const create = await this.urlRepository.create(originalUrl, user.user_id);
 
             return {
-                shorteredUrl: url
+                shorteredUrl: create.shorteredUrl
             };
         }
 
