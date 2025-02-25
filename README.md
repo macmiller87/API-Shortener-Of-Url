@@ -47,6 +47,10 @@
 
 ## Para rodar essa aplicação siga os seguintes passos:
 
+#### Arquivo `.env.example`
+
+- Antes de tudo editar o arquivo `.env.example` para `.env`, e preencher todas as variaveis de ambiente do projeto.
+
 - Copie a url do repositório na aba `CODE`.
 - Com o git instalado, execute o seguinte comando => `git clone "Aqui vai a url copiada acima"`.
 - Com o `Nodejs` e o `Yarn` instalados, abra o terminal do `git`, e execute o seguinte comando => `yarn`, para baixar as dependências da aplicação ou `npm install`.
