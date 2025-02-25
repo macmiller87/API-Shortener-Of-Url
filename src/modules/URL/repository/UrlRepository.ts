@@ -2,8 +2,8 @@ import { IUrlRepository } from "./implementation-IUrlRepository/IUrlRepository";
 import { PrismaService } from "src/database/prisma/prisma.service"
 import { IShortUrlDTO } from "../dtos/IShortUrlDTO";
 import { User } from "src/modules/User/entities/User";
-import { Url } from "@prisma/client";
 import { Injectable } from "@nestjs/common";
+import { Url } from "../entities/Url";
 
 @Injectable()
 export class UrlRepository implements IUrlRepository {
@@ -47,6 +47,16 @@ export class UrlRepository implements IUrlRepository {
         return find;
     }
 
+    async findUrlById(url_id: string): Promise<Url> {
+        const find = await this.prismaService.url.findFirst({
+            where: {
+                id: url_id
+            }
+        });
+
+        return find;
+    }
+
     async listUrls(user_id: string): Promise<User> {
         const getUrls = await this.prismaService.users.findUnique({
             where: {
@@ -63,10 +73,29 @@ export class UrlRepository implements IUrlRepository {
         return getUrls;
     }
 
-    async deleteUrl(user_id: string): Promise<void> {
-        await this.prismaService.url.deleteMany({
+    async updateUrl(updateOriginalUrl: string, user_id: string, urlId: string): Promise<Url> {
+        const updte = await this.prismaService.url.update({
             where: {
-                user_id: user_id
+                id: urlId,
+                AND: {
+                    user_id: user_id
+                }
+            },
+            data: {
+                originalUrl: updateOriginalUrl
+            }
+        });
+
+        return updte;
+    }
+
+    async deleteUrl(user_id: string, url_id: string): Promise<void> {
+        await this.prismaService.url.delete({
+            where: {
+                id: url_id,
+                AND: {
+                    user_id: user_id
+                }
             }
         });
     }

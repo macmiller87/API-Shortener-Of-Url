@@ -44,9 +44,13 @@
 
 - The end-point must recieve through `query` the `user_id` of the user to be consulted, and `token` of the same through auth `Bearer`, this request only to happen if two parameters passes before were going to validated.
 
+#### /url/updateUrl: Put - `/url/updateUrl`
+
+- The end-point must recieve the parameter `id` and `originalUrl`, inside of requisitation body, and through `query` the `user_id` of the user to be consulted, and `token` of the same through auth `Bearer`, this request only to happen if two parameters passes before were going to validated.
+
 #### /url/deleteUrl: Delete - `/url/deleteUrl`
 
-- The end-point must recieve through `query` the `user_id` of the user to be consulted, and `token` of the same through auth `Bearer`, this request only to happen if two parameters passes before were going to validated.
+- The end-point must recieve the parameter `id`, inside of requisitation body, and through `query` the `user_id` of the user to be consulted, and `token` of the same through auth `Bearer`, this request only to happen if two parameters passes before were going to validated.
 
 ## Setup Project
 
@@ -115,9 +119,13 @@ with the before command, docker will be started .... as soon as finished th buil
 
 - O end-point deve receber através do `query` o `user_id` do usuário a ser consultado e o `Token` do mesmo pelo auth `Bearer`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados.
 
+#### /url/updateUrl: Put - `/url/updateUrl`
+
+- O end-point deve receber o parâmetro `originalUrl` e `id`, dentro do corpo da requisição, através do parâmetro `query` o `user_id` do usuário a ser consultado, e o `Token` do mesmo pelo auth `Bearer`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados.
+
 #### /url/deleteUrl: Delete - `/url/deleteUrl`
 
-- O end-point deve receber através do `query` o `user_id` do usuário a ser consultado , e o `Token` do mesmo pelo auth `Bearer`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados.
+- O end-point deve receber o parâmetro `id`, dentro do corpo da requisição, através do parâmetro `query` o `user_id` do usuário a ser consultado , e o `Token` do mesmo pelo auth `Bearer`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados.
 
 ## Setup do Projeto
 

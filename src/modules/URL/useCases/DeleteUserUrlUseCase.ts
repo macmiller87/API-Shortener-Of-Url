@@ -7,14 +7,19 @@ export class DeleteUserUrlsUseCase {
 
     constructor(private urlRepository: IUrlRepository) {}
 
-    async execute(user_id: string): Promise<void> {
+    async execute(user_id: string, url_id: string): Promise<void> {
         const findUserById = await this.urlRepository.findUserId(user_id);
+        const findUrlById = await this.urlRepository.findUrlById(url_id);
 
         if(!findUserById) {
-            throw new AppError("User Not Found !");
+            throw new AppError("User Not Found !", 404);
         }
 
-        await this.urlRepository.deleteUrl(user_id);
+        if(!findUrlById) {
+            throw new AppError("Url Not Found !", 404);
+        }
+
+        await this.urlRepository.deleteUrl(user_id, url_id);
     }
 
 }
