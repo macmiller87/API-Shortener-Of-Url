@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -20,6 +19,7 @@ model Users {
   email     String
   password  String
   createdAt DateTime    @default(now())
+  Url       Url[]
   UserToken UserToken[]
 }
 
@@ -28,4 +28,14 @@ model UserToken {
   user_id   String
   createdAt DateTime @default(now())
   user      Users    @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+}
+
+model Url {
+  id           String   @id @default(uuid())
+  user_id      String
+  originalUrl  String   @unique
+  shorteredUrl String
+  shortCode    String
+  createdAt    DateTime @default(now())
+  user         Users    @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
 }
