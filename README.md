@@ -21,21 +21,21 @@
 
 #### `User` Module.
 
-#### users: Post - `/users`
+#### /users: Post - `/users`
 
 - A rota recebe `userName`, `èmail`, `password`, dentro do corpo da requisição.
 
-#### users/userToken: Post - `/users/userToken`
+#### /users/userToken: Post - `/users/userToken`
 
 - A rota recebe `èmail`, `password`, dentro do corpo da requisição, o resultado será a geração do `token`.
 
 #### `URL` Module.
 
-#### url/shortenUrl: Post - `/url/shortenUrl`
+#### /url/shortenUrl: Post - `/url/shortenUrl`
 
 - A rota deve receber o `originalUrl`, dentro do corpo da requisição, através do `query` o `user_id` do usuário a ser consultado , e o `Token` do mesmo pelo auth `Bearer`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados, o resultado será a geração da url encurtada `shorteredUrl`.
 
-#### url/getUrls: Get - `/url/getUrls`
+#### /url/getUrls: Get - `/url/getUrls`
 
 - A rota deve receber através do `query` o `user_id` do usuário a ser consultado , e o `Token` do mesmo pelo auth `Bearer`, essa consulta só pode acontecer caso os dois parâmetros passados anteriormente sejam válidados.
 
@@ -51,6 +51,7 @@
 - Com o git instalado, execute o seguinte comando => `git clone "Aqui vai a url copiada acima"`.
 - Com o `Nodejs` e o `Yarn` instalados, abra o terminal do `git`, e execute o seguinte comando => `yarn`, para baixar as dependências da aplicação ou `npm install`.
 - Para rodar o projeto execute o seguinte comando => `yarn dc:up`, o projeto está FULL `conteinerizado` atráves do `Docker`, com o comando anterior o docker será startado .... assim que finalizar o build está pronta para testar.
+- Para dar stop no projeto e limpar o docker execute o seguinte comando `yarn dc:down`.
 - Para testar o funcional da aplicação será necessário instalar o software `Insomnia ou Postman ou ainda a extensão ThunderClient no VsCode` e criar as rotas da aplicação citadas acima.
 
 ## Continius deploy `GitHub Actions`
