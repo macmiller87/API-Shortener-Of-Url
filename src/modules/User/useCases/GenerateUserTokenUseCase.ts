@@ -49,10 +49,9 @@ export class GenerateUserTokenUseCase {
         new AppError("Invalid password !", 401);
       }
 
-      const token = sign({ user: user }, process.env.SECRET, {
-        subject: user.userName,
-        expiresIn: parseInt(process.env.EXPIRES_IN),
-      });
+      const token = sign({ user }, process.env.SECRET, {
+        subject: user.user_id,
+      }); 
 
       await this.userTokenRepository.create({
         user_id: user.user_id,
@@ -60,6 +59,7 @@ export class GenerateUserTokenUseCase {
 
       return {
         user: {
+          user_id: user.user_id,
           userName: user.userName,
           email: user.email,
         },

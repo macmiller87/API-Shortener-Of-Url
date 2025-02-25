@@ -2,7 +2,7 @@
   "name": "api-shortener-of-url",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Macmiller Duarte de Andrade",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -16,17 +16,16 @@
     "dc:up": "docker compose up -d && docker compose logs -f app",
     "dc:down": "docker compose down --volumes --remove-orphans",
     "prisma:db:deploy:actions": "npx prisma migrate deploy && npx prisma generate",
-    "prisma:db:deploy": "npx prisma migrate deploy && npx prisma generate && npm run start",
+    "prisma:db:deploy": "npx prisma generate && npx prisma migrate deploy && npm run start",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
-    "@prisma/client": "6.4.1",
+    "@prisma/client": "^6.4.1",
     "bcryptjs": "^3.0.2",
     "jsonwebtoken": "^9.0.2",
     "reflect-metadata": "^0.2.2",

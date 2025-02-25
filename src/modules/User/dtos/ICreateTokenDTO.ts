@@ -6,5 +6,5 @@ export interface ICreateUserToken {
 
 export interface ICreateUsersTokenDTO {
   token: string;
-  user: Pick<User, "userName" | "email">;
+  user: Pick<User, "user_id" | "userName" | "email">;
 }
