@@ -17,6 +17,7 @@
 - Typescript
 - Postgres 
 - Nest
+- Prisma
 - JsonWebToken
 - Docker
 - Github Actions
@@ -87,6 +88,7 @@ with the before command, docker will be started .... as soon as finished th buil
 - Typescript
 - Postgres 
 - Nest
+- Prisma
 - JsonWebToken
 - Docker
 - Github Actions
